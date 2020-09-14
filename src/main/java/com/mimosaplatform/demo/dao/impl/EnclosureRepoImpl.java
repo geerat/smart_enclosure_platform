@@ -1,6 +1,7 @@
 package com.mimosaplatform.demo.dao.impl;
 
 import com.mimosaplatform.demo.dao.EnclosureRepo;
+import com.mimosaplatform.demo.dto.EnclosureTargetUpdate;
 import com.mimosaplatform.demo.models.Enclosure;
 import org.springframework.stereotype.Repository;
 
@@ -26,5 +27,22 @@ public class EnclosureRepoImpl implements EnclosureRepo {
 
         em.persist(oldEnclosure);
     }
+
+    @Override
+    @Transactional
+    public void updateTargetData(EnclosureTargetUpdate enclosureTargetUpdate, String enclosureId){
+        Enclosure oldEnclosure = em.find(Enclosure.class,enclosureId);
+        oldEnclosure.setTemperatureTopTarget(enclosureTargetUpdate.getTemperatureTopTarget());
+        oldEnclosure.setTemperatureBottomTarget(enclosureTargetUpdate.getTemperatureBottomTarget());
+        oldEnclosure.setHumidityTopTarget(enclosureTargetUpdate.getHumidityTopTarget());
+        oldEnclosure.setHumidityBottomTarget(enclosureTargetUpdate.getHumidityBottomTarget());
+        oldEnclosure.setSoilMoistureTarget(enclosureTargetUpdate.getSoilMoistureTarget());
+
+        em.persist(oldEnclosure);
+    }
+
+
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.mimosaplatform.demo.controller;
 
 import com.mimosaplatform.demo.dto.EnclosureSensorUpdate;
+import com.mimosaplatform.demo.dto.EnclosureTargetUpdate;
 import com.mimosaplatform.demo.models.Enclosure;
 import com.mimosaplatform.demo.resource.EnclosureResource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,17 @@ public class EnclosureController {
 
         if(enclosureResource.updateSensorData(enclosureUpdated)){
             return new ResponseEntity<>("Sensor data updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Oops! That's an error!", HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @RequestMapping(value="/enclosures/{enclosureId}/targets/", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<String> updateSensorData(@PathVariable(value = "enclosureId") String enclosureId, @RequestBody EnclosureTargetUpdate enclosureTargetUpdate) {
+
+        if(enclosureResource.updateTargetData(enclosureTargetUpdate, enclosureId)) {
+            return new ResponseEntity<>("Target data updated", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Oops! That's an error!", HttpStatus.BAD_REQUEST);
         }

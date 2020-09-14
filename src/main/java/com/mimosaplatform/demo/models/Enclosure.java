@@ -30,6 +30,23 @@ public class Enclosure {
     @Column(name="soil_moisture")
     private String soilMoisture;
 
+
+
+    @Column(name="temperature_top_target")
+    private String temperatureTopTarget;
+
+    @Column(name="temperature_bottom_target")
+    private String temperatureBottomTarget;
+
+    @Column(name="humidity_top_target")
+    private String humidityTopTarget;
+
+    @Column(name="humidity_bottom_target")
+    private String humidityBottomTarget;
+
+    @Column(name="soil_moisture_target")
+    private String soilMoistureTarget;
+
     public Enclosure(String enclosureId, EnclosureSensorUpdate sensorData) {
         this.enclosureId = enclosureId;
         this.temperatureTop = sensorData.getTemperatureTop();
@@ -88,5 +105,45 @@ public class Enclosure {
 
     public void setSoilMoisture(String soilMoisture) {
         this.soilMoisture = soilMoisture;
+    }
+
+    public String getTemperatureTopTarget() {
+        return temperatureTopTarget;
+    }
+
+    public void setTemperatureTopTarget(String temperatureTopTarget) {
+        this.temperatureTopTarget = temperatureTopTarget;
+    }
+
+    public String getTemperatureBottomTarget() {
+        return temperatureBottomTarget;
+    }
+
+    public void setTemperatureBottomTarget(String temperatureBottomTarget) {
+        this.temperatureBottomTarget = temperatureBottomTarget;
+    }
+
+    public String getHumidityTopTarget() {
+        return humidityTopTarget;
+    }
+
+    public void setHumidityTopTarget(String humidityTopTarget) {
+        this.humidityTopTarget = humidityTopTarget;
+    }
+
+    public String getHumidityBottomTarget() {
+        return humidityBottomTarget;
+    }
+
+    public void setHumidityBottomTarget(String humidityBottomTarget) {
+        this.humidityBottomTarget = humidityBottomTarget;
+    }
+
+    public String getSoilMoistureTarget() {
+        return soilMoistureTarget;
+    }
+
+    public void setSoilMoistureTarget(String soilMoistureTarget) {
+        this.soilMoistureTarget = soilMoistureTarget;
     }
 }
